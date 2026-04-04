@@ -5,34 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Indian Workers - भरोसेमंद भारतीय कारीगर</title>
     <link rel="stylesheet" href="style.css">
+<style><link rel="stylesheet" href="style.css">
+
+</style>
+
 </head>
 <body>
 
     <header>
-        <nav class="navbar">
-            <div class="logo">My Indian Workers</div>
-            <ul class="nav-links">
-                <li><a href="#">होम</a></li>
-                <li><a href="#">सेवाएं</a></li>
-                <li><a href="#">हमारे बारे में</a></li>
-                <li><a href="#">संपर्क करें</a></li>
-            </ul>
-        </nav>
-    </header>
+    <nav class="navbar">
+        <div class="logo">My Indian Workers</div>
+        <ul class="nav-links">
+            <li><a href="home-content.html">होम</a></li>
+            <li><a href="services.html">सेवाएं</a></li>
+            <li><a href="login-choice.html">लॉगिन</a></li>
+        </ul>
+    </nav>
+</header>
 
-    <section class="hero">
-        <h1>सही काम के लिए सही कारीगर ढूंढें</h1>
-        <p>भारत के सर्वश्रेष्ठ और कुशल वर्कर अब आपकी पहुंच में।</p>
-        <button id="cta-btn">अभी शुरू करें</button>
-    </section>
+    <section id="home" style="padding: 50px; text-align: center; background: #fff;">
+    <h2>आपका स्वागत है </h2>
+    <p>हम भारत के सबसे मेहनती कारीगरों को सीधे मालिकों से मिलाते हैं।</p>
+</section> 
+<style>
+    .service-card {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        width: 150px;
+        font-weight: bold;
+        border-bottom: 3px solid #e67e22; }
+    </style>
+ <section id="hero" class="hero-section">
+    <div class="hero-overlay">
+        <div class="hero-content">
+            <h1>सही काम के लिए<br>सही कारीगर</h1>
+            <p>इलेक्ट्रिशियन, प्लंबर, कारपेंटर और अन्य सभी<br>श्रेणी के अनुभवी वर्कर अब एक क्लिक पर।</p>
+            
+            <div class="search-bar">
+                <input type="text" id="cityInput" placeholder="शहर का नाम लिखें (अयोध्या, लखनऊ)...">
+                <button onclick="searchWorker()">खोजें</button>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <main id="main-content">
-        </main>
 
-    <footer>
-        <p>&copy; 2026 My Indian Workers | सभी अधिकार सुरक्षित</p>
-    </footer>
 
-    <script src="script.js"></script>
+
+</section>
+</section> <div id="services-anchor"></div> 
+<h2 style="text-align: center; color: #34495e; font-size: 32px; margin-top: 40px;">
+    <div id="search-results-container" style="display: none; padding: 20px; background: #fff3e6; border-radius: 15px; margin: 20px auto; max-width: 800px; border: 2px dashed #e67e22; text-align: center;">
+    <h3 id="result-title" style="color: #e67e22;"></h3>
+    <p id="result-message" style="color: #555;"></p>
+    </div>
+
+    हमारी प्रमुख सेवाएं
+</h2>
+
+
+<main style="padding: 50px 5%; text-align: center;">
+    <h2>हमारी सेवाएं जल्द ही आ रही हैं</h2>
+    <p>हम भारत के हर शहर के बेहतरीन वर्कर्स को इस प्लेटफॉर्म से जोड़ रहे हैं।</p>
+</main>
+<section id="contact" style="padding: 60px 5%; background: #f4f4f4; text-align: center;">
+    <h2 style="color: #2c3e50; margin-bottom: 30px;">संपर्क करें</h2>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+        <div style="background: white; padding: 20px; border-radius: 10px; width: 250px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+            <h4 style="color: #e67e22;">📍 हमारा पता</h4>
+            <p>अयोध्या / लखनऊ, उत्तर प्रदेश</p>
+        </div>
+        <div style="background: white; padding: 20px; border-radius: 10px; width: 250px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+            <h4 style="color: #e67e22;">📞 फोन और व्हाट्सअप्प नंबर</h4>
+            <p>+91 79056 67352</p>
+        </div>
+    </div>
+</section>
+
+
+  <footer>
+    <p>© 2026 <span class="brand-name">My Indian Workers</span> | "भारतीय कारीगरों की पहली पसंद"</p>
+    
+    <div class="footer-links">
+    <a href="terms.html" target="_blank">नियम और शर्त (rules & Regulations)</a>
+</div>
+
+    
+    <div class="admin-info">
+        Admin: <span class="admin-name">Gyan Prakash Gupta</span> & <span class="admin-name">Ram Bhai Kung Fu</span>
+    </div>
+</footer>
+
+   
+<script src="script.js"></script>
+
 </body>
 </html>
