@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>वर्कर रजिस्ट्रेशन - My Indian Workers</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f4f4; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .form-container { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 300px; }
+        h2 { color: #e67e22; margin-bottom: 20px; text-align: center; }
+        
+        /* इनपुट बॉक्स स्टाइल */
+        input { 
+            width: 100%; 
+            padding: 20px; 
+            margin: 10px 0; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+            box-sizing: border-box; /* इससे पैडिंग बाहर नहीं निकलती */
+        }
+
+        .submit-btn { 
+            width: 100%; 
+            padding: 12px; 
+            background: #e67e22; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            font-size: 16px;
+        }
+        
+        .submit-btn:hover { background: #d35400; }
+        .back { display: block; text-align: center; margin-top: 15px; color: gray; text-decoration: none; font-size: 14px; }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>वर्कर जानकारी</h2>
+    <form action="#">
+        <input type="text" id="regName"placeholder="पूरा नाम" required>
+        <input type="tel" id="regMobile" placeholder="मोबाइल नंबर" pattern="[0-9]{10}" title="10 अंकों का नंबर डालें" required>
+        <input type="text" id="regAdhar" placeholder="आधार कार्ड नंबर (12 अंक)" pattern="[0-9]{12}" title="12 अंकों का आधार नंबर डालें" required>
+         <input type="text" id="regAddress" placeholder="पूरा पता" required>
+          <input type="text" id="regWork" placeholder="आपका काम" required>
+        
+        <button type="submit" class="submit-btn">सबमिट करें</button>
+    </form>
+    
+    <a href="login-choice.html" class="back">← वापस जाएँ</a>
+</div>
+
+</body>
+</html>
