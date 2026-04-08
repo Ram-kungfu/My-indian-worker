@@ -31,5 +31,38 @@
 
 
     <script src="script.js"></script>
+    
+    <script>
+function recordAttendance(status) {
+    const scriptURL = 'आपका_गूगल_स्क्रिप्ट_URL'; // अपना Apps Script URL यहाँ डालें
+    
+    // अभी के लिए हम मोबाइल नंबर पूछ सकते हैं या इसे लॉगिन से जोड़ सकते हैं
+    const workerMobile = prompt("अपनी हाजिरी दर्ज करने के लिए मोबाइल नंबर डालें:");
+    
+    if (!workerMobile) return;
+
+    const data = {
+        userType: 'attendance',
+        regMobile: workerMobile,
+        status: status, // 'Check In' या 'Check Out'
+        timestamp: new Date().toLocaleString()
+    };
+
+    // बटन को कुछ देर के लिए डिसेबल करना
+    const btnText = status === 'Check In' ? 'पहुँच गया...' : 'काम खत्म...';
+    alert("हाजिरी भेजी जा रही है...");
+
+    fetch(scriptURL, { 
+        method: 'POST', 
+        mode: 'no-cors', 
+        body: JSON.stringify(data) 
+    })
+    .then(() => {
+        alert("आपकी " + status + " हाजिरी लग गई है!");
+    })
+    .catch(error => console.error('Error!', error.message));
+}
+</script>
+
 </body>
 </html>

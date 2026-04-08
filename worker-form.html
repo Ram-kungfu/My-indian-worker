@@ -105,6 +105,64 @@
    <a href="login-choice.html" class="back">← वापस जाएँ</a>
 </div>
     <script src="script.js"></script>
+    
+    <script>
+function submitWorker() {
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyuNgvUNcDQXt-D4JfazMY8VZG9tRVAnYv-rTtdfoXKDysRLbSK8ut3lKSnb5ihYJfl/exec';// यहाँ अपना नया लिंक डालें
+    const data = {
+        userType: 'worker',
+        regName: document.getElementById('regName').value,
+        regMobile: document.getElementById('regMobile').value,
+        regAadhar: document.getElementById('regAadhar').value, // आधार कार्ड यहाँ से उठेगा
+        regAddress: document.getElementById('regAddress').value,
+        regCity: document.getElementById('regCity').value,
+        regWork: document.getElementById('regWork').value,
+        countryCode: '+91'
+    };
+
+    fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(data) })
+    .then(() => {
+        alert("वर्कर डेटा सुरक्षित हो गया!");
+        window.location.href = 'attendance.html'; // सबमिट के बाद हाजिरी वाला पेज खुलेगा
+    });
+}
+</script>
+
+<script>
+function searchWorkers() {
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzusC1asZTlA0mnmU5VNnfwaDXCS5MaJ_JOCvVBLEXgBLaL_BjUV7zDTQxY4QHb7A7k/exec';//
+    const cityName = document.getElementsByName("cityName")[0].value;
+    const workCategory = document.getElementsByName("workCategory")[0].value;
+
+    const btn = document.querySelector('button');
+    btn.innerHTML = "खोज रहे हैं...";
+    btn.disabled = true;
+
+    // डेटा को गूगल शीट से खोजने के लिए रिक्वेस्ट (GET)
+    fetch(`${scriptURL}?type=search&city=${cityName}&work=${workCategory}`)
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success' && data.workers.length > 0) {
+            // अगर वर्कर मिल गए, तो उन्हें दिखाने का तरीका यहाँ लिखें
+            alert(data.workers.length + " कारीगर मिले!");
+            console.log(data.workers);
+            // आप यहाँ एक लिस्ट दिखा सकते हैं
+        } else {
+            alert("माफ़ करें, इस शहर में अभी कोई कारीगर उपलब्ध नहीं है।");
+        }
+        btn.innerHTML = "खोजें";
+        btn.disabled = false;
+    })
+    .catch(error => {
+        console.error('Error!', error.message);
+        alert("अभी खोज सेवा में कुछ तकनीकी दिक्कत है।");
+        btn.innerHTML = "खोजें";
+        btn.disabled = false;
+    });
+}
+</script>
+
+
 </body>
 </html>
 
