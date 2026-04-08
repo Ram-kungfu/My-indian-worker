@@ -29,7 +29,7 @@
 <body>
 
 <div class="form-card">
-    <h2>मालिक जानकारी</h2>
+    <h2>मालिक पंजीकरण</h2>
     <p style="color: #666; margin-bottom: 15px;">सेवा बुक करने के लिए रजिस्टर करें</p>
 
     <div class="warning-box">
@@ -39,7 +39,9 @@
     <form id="ownerForm">
         <input type="hidden" name="userType" value="owner">
         
-        <input type="text" name="regName" placeholder="आपका पूरा नाम" required>
+        <input type="text" name="regName"
+        id="regName"
+        placeholder="आपका पूरा नाम" required>
         
         <div class="input-group">
             <select name="countryCode" required>
@@ -49,6 +51,7 @@
             </select>
             <input type="tel" 
        name="regMobile" 
+       id="regMobile"
        placeholder="मोबाइल नंबर (10 अंक)" 
        pattern="[0-9]{10}" 
        title="कृपया 10 अंकों का सही मोबाइल नंबर डालें" 
@@ -57,7 +60,9 @@
 
         </div>
         
-        <input type="text" name="regCity" placeholder="अपना शहर (जैसे: अयोध्या)" required>
+        <input type="text" name="regCity"
+        id="regCity"
+        placeholder="अपना शहर (जैसे: अयोध्या)" required>
         <button type="submit" class="submit-btn">सबमिट करें</button>
     </form>
     
@@ -76,8 +81,12 @@
         <h3 style="color: #d35400;">कारीगर बुक करें</h3>
         <form id="bookingForm">
             <input type="hidden" name="userType" value="Booking">
-            <input type="text" name="ownerName" placeholder="आपका नाम" required>
-            <input type="tel" name="regMobile" placeholder="मोबाइल नंबर" required>
+            <input type="text" name="ownerName" 
+            id="ownerName"
+            placeholder="आपका नाम" required>
+            <input type="tel" name="regMobile" 
+            id="bookMobile"
+            placeholder="मोबाइल नंबर" required>
             <select name="serviceType" required>
                 <option value="">कौन सा काम है?</option>
                 <option value="Plumber">प्लंबर</option>
@@ -85,7 +94,9 @@
                 <option value="Rajmistri">राजमिस्त्री</option>
                 <option value="Carpenter">कारपेंटर</option>
             </select>
-            <textarea name="address" placeholder="पूरा पता लिखें" required></textarea>
+            <textarea name="address"
+            id="regAddress"
+            placeholder="पूरा पता लिखें" required></textarea>
             <button type="submit" class="submit-btn" style="background:#27ae60;">बुकिंग कन्फर्म करें ✅</button>
         </form>
     </section>
@@ -118,46 +129,7 @@ function showBookingForm() {
 
    
 </script>
+
 <script src="script.js"></script>
-
-<script>
-function submitOwner() {
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbyuNgvUNcDQXt-D4JfazMY8VZG9tRVAnYv-rTtdfoXKDysRLbSK8ut3lKSnb5ihYJfl/exec';
-    const data = {
-        userType: 'owner',
-        regName: document.getElementById('regName').value,
-        regMobile: document.getElementById('regMobile').value,
-        regCity: document.getElementById('regCity').value,
-        countryCode: '+91'
-    };
-
-    fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(data) })
-    .then(() => {
-        alert("मालिक की जानकारी सेव हो गई!");
-        window.location.href = 'booking-form.html'; // अब बुकिंग वाला फॉर्म खुलेगा
-    });
-}
-</script>
-<script>
-function submitBooking() {
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbyuNgvUNcDQXt-D4JfazMY8VZG9tRVAnYv-rTtdfoXKDysRLbSK8ut3lKSnb5ihYJfl/exec';
-    const data = {
-        userType: 'booking',
-        ownerName: document.getElementById('ownerName').value,
-        regMobile: document.getElementById('regMobile').value,
-        serviceType: document.getElementById('serviceType').value,
-        address: document.getElementById('address').value,
-        time: document.getElementById('time').value
-    };
-
-    fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(data) })
-    .then(() => {
-        alert("आपकी बुकिंग कन्फर्म हो गई है!");
-        window.location.href = 'index.html'; // सब खत्म होने के बाद वापस होम पेज
-    });
-}
-</script>
-
-
 </body>
 </html>

@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Indian Workers - भरोसेमंद भारतीय कारीगर</title>
     <link rel="stylesheet" href="style.css">
-<style><link rel="stylesheet" href="style.css">
 
-</style>
 
 </head>
 <body>
@@ -124,8 +122,7 @@
     </div>
 </footer>
 
-  </button>
-</div>
+
 
 <script src="script.js"></script>
 
@@ -133,7 +130,8 @@
 <script>
     
    
-    
+    function searchWorkers() {
+
     const scriptURL = "https://script.google.com/macros/s/AKfycbyuNgvUNcDQXt-D4JfazMY8VZG9tRVAnYv-rTtdfoXKDysRLbSK8ut3lKSnb5ihYJfl/exec";
     
     const city = document.getElementById('cityInput').value.trim();
@@ -153,9 +151,10 @@
     .then(response => response.json())
     .then(results => {
         display.innerHTML = ""; // मैसेज हटाएँ
+ 
 
         if (results && results.length > 0) {
-            results.forEach(worker => {
+                        results.forEach(worker => {
                 display.innerHTML += `
                     <div style="border:1px solid #d35400; padding:15px; margin:10px; border-radius:12px; background:#fff; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                         <p style="font-size: 18px; color: #d35400; margin:0;"><b>नाम:</b> ${worker.name}</p>
@@ -165,17 +164,27 @@
                         <button onclick="window.location.href='owner-form.html'" style="width:100%; background:#27ae60; color:white; border:none; padding:10px; border-radius:8px; cursor:pointer; font-weight:bold;">
                             बुकिंग के लिए संपर्क करें
                         </button>
-                    </div>`;
-            });
-        } else {
-            display.innerHTML = "<p style='text-align:center; color:red; padding:20px;'>माफ़ करें, इस शहर में कारीगर नहीं मिला।</p>";
-        }
-    })
-    .catch(error => {
+                    </div>\`;
+
+
+               
+            }); // यह forEach को बंद करेगा
+} // 
+       
+        else {
+            display.innerHTML = "<p style='text-align:center; color:red; padding:20px;'>माफ़ करें, इस शहर में कारीगर नहीं मिला।</p>"
+        } // else को बंद करने के लि
+
+ })
+    .catch(error => { //
         console.error('Error!', error);
-        display.innerHTML = "<p style='text-align:center; color:red;'>कनेक्शन फेल। फिर कोशिश करें।</p>";
-    });
-}
+        display.innerHTML = "<p style='text-align:center; color:red;'>कनेक्शन फेल। फिर कोशश करें।</p>";
+    }); //यह catch को बंद करेगा
+} // यह मुख्य function searchWorkers को बंद करेगा
+
+
+ 
+
 
 
 </script>

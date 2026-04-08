@@ -227,3 +227,7 @@ footer p span.brand-name {
     text-align: center;
 }
 
+.hero-content h1 {
+    word-wrap: break-word; /* लंबा शब्द होने पर अगली लाइन में आ जाएगा */
+    padding: 0 10px;
+}
