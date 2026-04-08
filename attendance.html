@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>वर्कर हाजिरी - My Indian Karigar</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 20px; background: #f4f7f6; }
+        .card { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        button { width: 80%; padding: 15px; margin: 10px; border: none; border-radius: 10px; color: white; font-weight: bold; font-size: 16px; cursor: pointer; }
+        .btn-in { background: #27ae60; }
+        .btn-out { background: #e67e22; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+    <h2>🛠️ वर्कर अटेंडेंस</h2>
+    <p>कृपया काम पर पहुँचने और जाने के समय फोटो खींचें।</p>
+    
+    <input type="file" id="cameraInput" accept="image/*" capture="camera" style="display: none;" onchange="uploadPhoto()">
+    
+    <button class="btn-in" onclick="openCamera('In')">📸 पहुँच गया (Check In)</button>
+    <button class="btn-out" onclick="openCamera('Out')">📸 काम खत्म (Check Out)</button>
+    
+    <div id="statusMessage" style="margin-top: 15px; font-weight: bold; color: #2c3e50;"></div>
+    
+    <br><br>
+    <a href="index.html" style="color: #777; text-decoration: none;">← वापस जाएं</a>
+</div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>

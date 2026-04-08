@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>वर्कर रजिस्ट्रेशन - My Indian Workers</title>
     <style>
-        body { font-family: sans-serif; background: #f4f4f4; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        body { font-family: sans-serif; background: #f4f4f4; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
         .form-container { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 300px; }
         h2 { color: #e67e22; margin-bottom: 20px; text-align: center; }
         
         /* इनपुट बॉक्स स्टाइल */
         input { 
             width: 100%; 
-            padding: 20px; 
-            margin: 10px 0; 
+            padding: 15px; 
+            margin: 8px 0; 
             border: 1px solid #ccc; 
             border-radius: 5px; 
             box-sizing: border-box; /* इससे पैडिंग बाहर नहीं निकलती */
@@ -41,18 +41,71 @@
     <h2>वर्कर जानकारी</h2>
     <button type="button" onclick="location.href='owner-form.html'">वर्कर पंजीकरण</button>
 
-    <form action="#">
-        <input type="text" id="regName"placeholder="पूरा नाम" required>
-        <input type="tel" id="regMobile" placeholder="मोबाइल नंबर" pattern="[0-9]{10}" title="10 अंकों का नंबर डालें" required>
-        <input type="text" id="regAdhar" placeholder="आधार कार्ड नंबर (12 अंक)" pattern="[0-9]{12}" title="12 अंकों का आधार नंबर डालें" required>
-         <input type="text" id="regAddress" placeholder="पूरा पता" required>
-           <input type="text" id="regWork" placeholder="आपका काम" required>
-           
-           <button type="submit" class="submit-btn">सबमिट करें</button>
-    </form>
-    
-    <a href="login-choice.html" class="back">← वापस जाएँ</a>
+   <form id="workerForm">
+    <input type="text" id="regName" name="regName" placeholder="पूरा नाम" required>
+    <div style="display: flex; gap: 5px; margin-bottom: 10px;">
+    <select name="countryCode" style="width: 85px; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px;">
+        <option value="+91">+91 (IN)</option>
+        <option value="+966">+966 (SA)</option>
+        <option value="+971">+971 (UAE)</option>
+    </select>
+
+    <input type="tel" 
+           name="regMobile" 
+           placeholder="मोबाइल नंबर (10 अंक)" 
+           pattern="[0-9]{10}" 
+           title="कृपया 10 अंकों का सही मोबाइल नंबर डालें" 
+           maxlength="10" 
+           oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+           style="flex: 1; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; box-sizing: border-box;"
+           required>
+</div>
+<div style="width: 100%; margin-bottom: 10px;">
+    <input type="tel" 
+           name="regAadhar" 
+           placeholder="आधार कार्ड नंबर (12 अंक)" 
+           pattern="[0-9]{12}" 
+           title="आधार कार्ड 12 अंकों का होना चाहिए" 
+           maxlength="12" 
+           oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+           style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; box-sizing: border-box; display: block;"
+           required>
 </div>
 
+<input type="text" name="regAddress" placeholder="पूरा पता (मकान नंबर/गली)" required>
+    
+<input type="text" name="regCity" placeholder="अपना शहर लिखें (जैसे: अयोध्या)" required>
+
+  <input type="text" id="regWork" name="regWork" placeholder="आपका काम" required>
+     <input type="hidden" name="userType" value="Worker">
+
+    <button type="submit" class="submit-btn">सबमिट करें</button>
+</form>
+<div style="text-align:center; margin-top:20px;">
+    <button onclick="window.location.href='attendance.html'" 
+            style="background:#2c3e50; color:white; padding:15px 30px; border:none; border-radius:10px; font-weight:bold; cursor:pointer; width:90%; font-size:18px;">
+        📸 वर्कर हाजिरी (Attendance)
+    </button>
+</div>
+
+<div style="background:white; padding:20px; border-radius:15px; box-shadow:0 4px 8px rgba(0,0,0,0.1);">
+    <h3>अपनी हाजिरी दर्ज करें</h3>
+    
+    <button onclick="takeAttendance('In')" 
+            style="background:#27ae60; color:white; width:100%; padding:15px; margin-bottom:10px; border:none; border-radius:8px; font-weight:bold;">
+        ✅ पहुँच गया (Check In)
+    </button>
+
+    <button onclick="takeAttendance('Out')" 
+            style="background:#e67e22; color:white; width:100%; padding:15px; border:none; border-radius:8px; font-weight:bold;">
+        🚩 काम खत्म (Check Out)
+    </button>
+</div>
+
+   <a href="login-choice.html" class="back">← वापस जाएँ</a>
+</div>
+    <script src="script.js"></script>
 </body>
 </html>
+
+: <input type="hidden" name="userType" value="worker">

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>वर्कर खोजें - My Indian Karigar</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 15px; }
+        .search-box { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        input, select { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background: #f39c12; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
+        .worker-card { border: 1px solid #d35400; padding: 15px; margin-bottom: 10px; border-radius: 10px; background: #fff; text-align: left; }
+    </style>
+</head>
+<body>
+
+    <div class="search-box">
+        <h2 style="text-align: center; color: #f39c12;">🛠️ वर्कर खोजें</h2>
+        <input type="text" id="cityInput" placeholder="शहर का नाम (जैसे: Lucknow)">
+        <select id="workInput">
+            <option value="">काम की कैटेगरी चुनें</option>
+            <option value="Plumber">प्लंबर</option>
+            <option value="Electrician">इलेक्ट्रीशियन</option>
+            <option value="Carpenter">बढ़ई</option>
+            <option value="Mason">मिस्त्री</option>
+        </select>
+        <button onclick="searchWorkers()">खोजें</button>
+    </div>
+
+    <div id="results"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

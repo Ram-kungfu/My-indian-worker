@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>बुकिंग सफल - My Indian Karigar</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .success-card { background: #ffffff; max-width: 450px; width: 90%; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; }
+        .icon-box { width: 80px; height: 80px; background: #27ae60; color: white; font-size: 40px; line-height: 80px; border-radius: 50%; margin: 0 auto 20px; }
+        h2 { color: #27ae60; margin: 0 0 10px; }
+        .booking-id { background: #e8f5e9; color: #2e7d32; padding: 5px 15px; border-radius: 50px; font-weight: bold; display: inline-block; margin-bottom: 20px; }
+        .warning-text { color: #d35400; font-weight: bold; font-size: 14px; margin-bottom: 20px; padding: 10px; background: #fff3e0; border-radius: 8px; }
+        .bank-details { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 12px; padding: 15px; text-align: left; margin-bottom: 25px; }
+        .bank-details p { margin: 5px 0; font-size: 14px; color: #333; }
+        .bank-details b { color: #555; }
+        .whatsapp-btn { display: block; background: #25D366; color: white; text-decoration: none; padding: 15px; border-radius: 10px; font-weight: bold; transition: 0.3s; }
+        .whatsapp-btn:hover { background: #128C7E; transform: translateY(-2px); }
+        .home-link { display: inline-block; margin-top: 20px; color: #777; text-decoration: none; font-size: 14px; }
+    </style>
+</head>
+<body>
+
+<div class="success-card">
+    <div class="icon-box">✓</div>
+    <h2>बुकिंग स्वीकार की गई!</h2>
+    <div class="booking-id" id="displayId">ID: #MIB-8472</div>
+    
+    <p class="warning-text">⚠️ महत्वपूर्ण: बुकिंग कन्फर्म करने के लिए ₹200 का एडवांस भुगतान अनिवार्य  है!</p>
+    
+    <div class="bank-details">
+        <p><b>बैंक का नाम:</b> State Bank of India</p>
+        <p><b>खाता धारक:</b> My Indian Karigar</p>
+        <p><b>अकाउंट नंबर:</b> 12345678901</p>
+        <p><b>IFSC कोड:</b> SBIN0001234</p>
+    </div>
+
+    <p style="font-size: 13px; color: #666;">भुगतान के बाद नीचे दिए गए बटन पर क्लिक करके स्क्रीनशॉट व्हाट्सएप (WhatsApp) करें।</p>
+    
+    <a href="https://wa.me/91XXXXXXXXXX?text=नमस्ते, मैंने अभी बुकिंग की है। यहाँ मेरा पेमेंट स्क्रीनशॉट है।" class="whatsapp-btn" target="_blank">
+        WhatsApp पर स्क्रीनशॉट भेजें
+    </a>
+
+    <a href="index.html" class="home-link">← होम पेज पर वापस जाएं</a>
+</div>
+
+<script>
+    // रैंडम आईडी जेनरेट करने के लिए
+    document.getElementById('displayId').innerText = "ID: #MIB-" + Math.floor(1000 + Math.random() * 9000);
+</script>
+window.location.href = 'payment-success.html';
+</body>
+</html>
