@@ -131,33 +131,28 @@
 
 
 <script>
-function searchWorkers() {
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbyuNgvUNcDQXt-D4JfazMY8VZG9tRVAnYv-rTtdfoXKDysRLbSK8ut3lKSnb5ihYJfl/exec'; // New Deployment वाला URL
     
-    function searchWorkers() {
-    // 1. इनपुट और डिस्प्ले एरिया को पकड़ना
-    const cityInput = document.getElementById('cityInput');
-    const workInput = document.getElementById('workInput');
+   
+    
+    const scriptURL = "https://script.google.com/macros/s/AKfycbyuNgvUNcDQXt-D4JfazMY8VZG9tRVAnYv-rTtdfoXKDysRLbSK8ut3lKSnb5ihYJfl/exec";
+    
+    const city = document.getElementById('cityInput').value.trim();
+    const work = document.getElementById('workInput').value.trim();
     const display = document.getElementById('searchResults');
 
-    const city = cityInput ? cityInput.value.trim() : "";
-    const work = workInput ? workInput.value.trim() : "";
-
-    // 2. खाली बॉक्स चेक करना
-    if (!city || !work) {
+    if(!city || !work) {
         alert("कृपया शहर और काम दोनों भरें");
         return;
     }
 
-    // 3. लोडिंग मैसेज दिखाना
-    display.innerHTML = "<p style='text-align:center; color:#d35400;'><b>🔍 खोजा जा रहा है, कृपया रुकें...</b></p>";
+    // लोडिंग मैसेज
+    display.innerHTML = "<p style='text-align:center; color:#d35400;'><b>🔍 खोजा जा रहा है...</b></p>";
 
-    // 4. डेटा मंगाना (बिना मोबाइल नंबर के)
-    // यहाँ window.globalScriptURL का इस्तेमाल हो रहा है जो आपकी script.js में है
-    fetch(`${window.globalScriptURL}?action=search&city=${encodeURIComponent(city)}&work=${encodeURIComponent(work)}`)
+    // डेटा मंगाना
+    fetch(`${scriptURL}?action=search&city=${encodeURIComponent(city)}&work=${encodeURIComponent(work)}`)
     .then(response => response.json())
     .then(results => {
-        display.innerHTML = ""; // लोडिंग हटाएँ
+        display.innerHTML = ""; // मैसेज हटाएँ
 
         if (results && results.length > 0) {
             results.forEach(worker => {
@@ -165,7 +160,7 @@ function searchWorkers() {
                     <div style="border:1px solid #d35400; padding:15px; margin:10px; border-radius:12px; background:#fff; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                         <p style="font-size: 18px; color: #d35400; margin:0;"><b>नाम:</b> ${worker.name}</p>
                         <p style="margin:5px 0;"><b>काम:</b> ${worker.work}</p>
-                        <p style="margin:5px 0; color:#666;"><b>शहर:</b> ${worker.city || city}</p>
+                        <p style="margin:5px 0;"><b>शहर:</b> ${worker.city}</p>
                         <hr style="border:0; border-top:1px solid #eee; margin:10px 0;">
                         <button onclick="window.location.href='owner-form.html'" style="width:100%; background:#27ae60; color:white; border:none; padding:10px; border-radius:8px; cursor:pointer; font-weight:bold;">
                             बुकिंग के लिए संपर्क करें
@@ -173,14 +168,15 @@ function searchWorkers() {
                     </div>`;
             });
         } else {
-            display.innerHTML = "<p style='text-align:center; color:red; padding:20px;'>माफ़ करें, इस शहर में अभी कोई कारीगर नहीं मिला।</p>";
+            display.innerHTML = "<p style='text-align:center; color:red; padding:20px;'>माफ़ करें, इस शहर में कारीगर नहीं मिला।</p>";
         }
     })
     .catch(error => {
         console.error('Error!', error);
-        display.innerHTML = "<p style='text-align:center; color:red;'>नेटवर्क में दिक्कत है। कृपया दोबारा कोशिश करें।</p>";
+        display.innerHTML = "<p style='text-align:center; color:red;'>कनेक्शन फेल। फिर कोशिश करें।</p>";
     });
 }
+
 
 </script>
 
